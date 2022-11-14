@@ -8,9 +8,14 @@ public class PlayerDeath : MonoBehaviour
     bool CheckForDeath = false;
     void FixedUpdate()
     {
+        
         if (CheckForDeath)
         {
-            if (this.GetComponent<Rigidbody2D>().velocity.x <= 5f)
+            if (this.GetComponent<Rigidbody2D>().velocity.x <= 2f)
+            {
+                Death();
+            }
+            if(this.transform.position.y < -10)
             {
                 Death();
             }
