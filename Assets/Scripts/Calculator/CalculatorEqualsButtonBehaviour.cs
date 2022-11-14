@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CalculatorEqualsButtonBehaviour : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class CalculatorEqualsButtonBehaviour : MonoBehaviour
         failCounter++;
         if(failCounter >= 3)
         {
-            Debug.Log("Calculator section passed.");
+            StartCoroutine(Camera.main.GetComponent<ObjectShake>().ShakeObject(2f, 0.8f));
+            Invoke("LoadNextScene", 2f);
         }
         else
         {
@@ -27,6 +29,11 @@ public class CalculatorEqualsButtonBehaviour : MonoBehaviour
             shakeMagnitude += 0.1f;
         }
         
+    }
+
+    void LoadNextScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CrashScene");
     }
 
 }

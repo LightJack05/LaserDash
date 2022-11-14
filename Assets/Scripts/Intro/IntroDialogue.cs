@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class IntroTextScrolling : MonoBehaviour
+public class IntroDialogue : MonoBehaviour
 {
-    int currentText = 0;
     public GameObject TextBox;
     List<string> textList = new List<string>()
     {
+        "Use [SPACE] to move though dialogs.",
         "Hmm... Who threw this disk into my Letter Box?",
         "Let's find out I guess...",
         "Hmm... \"Secrets.exe\"... I wonder what that's all about.",
@@ -16,24 +16,16 @@ public class IntroTextScrolling : MonoBehaviour
     };
     private void Start()
     {
-        TextBox.GetComponent<TextMeshProUGUI>().text = textList[currentText];
+        this.GetComponent<DialogueHandler>().ShowDialogue(textList, false, false);
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
-        {
-            ShowNextText();
-        }
-    }
-
-    void ShowNextText()
-    {
-        currentText++;
-        if(currentText >= textList.Count)
+        if(this.GetComponent<DialogueHandler>().IsDialogDisplayed == false)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("CalculatorScene");
         }
-        TextBox.GetComponent<TextMeshProUGUI>().text = textList[currentText];
     }
+
+
 }
