@@ -15,21 +15,32 @@ public class MainControls : MonoBehaviour
         {
             if (jumpPoints > 0)
             {
-                if (jumpPoints == 1)
-                {
+                
                     this.GetComponent<Rigidbody2D>().velocity = new(this.GetComponent<Rigidbody2D>().velocity.x, 0);
-                }
+                
                 this.GetComponent<Rigidbody2D>().AddForce(new(0, 75f), ForceMode2D.Impulse);
                 jumpPoints--;
             }
         }
 
     }
+
+    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "floor")
+        if (collision.gameObject.tag == "floor")
         {
-            jumpPoints = 2;
+            foreach (ContactPoint2D hitPos in collision.contacts)
+            {
+                Debug.Log(hitPos.normal);
+                if ((hitPos.normal.y > 0.9f))
+                {
+                    jumpPoints = 2;
+                    break;
+                }
+            }
         }
     }
+    
 }
