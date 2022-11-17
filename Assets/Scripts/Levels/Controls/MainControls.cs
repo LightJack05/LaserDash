@@ -15,9 +15,9 @@ public class MainControls : MonoBehaviour
         {
             if (jumpPoints > 0)
             {
-                
-                    this.GetComponent<Rigidbody2D>().velocity = new(this.GetComponent<Rigidbody2D>().velocity.x, 0);
-                
+
+                this.GetComponent<Rigidbody2D>().velocity = new(this.GetComponent<Rigidbody2D>().velocity.x, 0);
+
                 this.GetComponent<Rigidbody2D>().AddForce(new(0, 75f), ForceMode2D.Impulse);
                 jumpPoints--;
             }
@@ -25,7 +25,7 @@ public class MainControls : MonoBehaviour
 
     }
 
-    
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -42,5 +42,5 @@ public class MainControls : MonoBehaviour
             }
         }
     }
-    
+
 }
