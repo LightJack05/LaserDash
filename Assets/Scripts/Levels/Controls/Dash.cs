@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Dash : MonoBehaviour
+{
+    bool isDashCooldownActive = false;
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(1) && !isDashCooldownActive)
+        {
+            StartCoroutine(DoDash());
+        }
+    }
+
+    IEnumerator DoDash()
+    {
+        isDashCooldownActive = true;
+
+        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        Vector2 oldVelocity = this.GetComponent<Rigidbody2D>().velocity;
+        this.GetComponent<Rigidbody2D>().velocity = oldVelocity * 10f;
+
+        yield return new WaitForSeconds(0.1f);
+
+        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        this.GetComponent<BoxCollider2D>().enabled = true;
+        this.GetComponent<Rigidbody2D>().velocity = oldVelocity;
+
+        yield return new WaitForSeconds(4f);
+
+        isDashCooldownActive = false;
+    }
+}

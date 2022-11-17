@@ -33,7 +33,7 @@ public class MainControls : MonoBehaviour
         {
             foreach (ContactPoint2D hitPos in collision.contacts)
             {
-                Debug.Log(hitPos.normal);
+                
                 if ((hitPos.normal.y > 0.9f))
                 {
                     jumpPoints = 2;

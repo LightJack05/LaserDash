@@ -36,7 +36,7 @@ public class PlayerDeath : MonoBehaviour
         {
             foreach (ContactPoint2D hitPos in collision.contacts)
             {
-                Debug.Log(hitPos.normal);
+                
                 if ((hitPos.normal.y < 0.9f))
                 {
                     Death();
@@ -52,13 +52,18 @@ public class PlayerDeath : MonoBehaviour
         {
            foreach(ContactPoint2D hitPos in collision.contacts)
            {
-                Debug.Log(hitPos.normal);
+                
                 if ((hitPos.normal.y < 0.9f))
                 {
                     Death();
                     break;
                 }
             }
+        }
+
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Death();
         }
     }
     void Death()
