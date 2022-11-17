@@ -66,7 +66,7 @@ public class PlayerDeath : MonoBehaviour
             Death();
         }
     }
-    void Death()
+    public void Death()
     {
         Debug.Log("Death");
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
