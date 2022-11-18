@@ -5,12 +5,7 @@ using UnityEngine;
 public class Dash : MonoBehaviour
 {
     bool isDashCooldownActive = false;
-    GameObject level;
 
-    private void Start()
-    {
-        level = GameObject.FindGameObjectWithTag("floor");
-    }
 
     private void Update()
     {
