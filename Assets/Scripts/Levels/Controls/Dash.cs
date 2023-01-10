@@ -4,20 +4,28 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
-    bool isDashCooldownActive = false;
-
+    bool dashAvailable = false;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1) && !isDashCooldownActive)
+        if (Input.GetMouseButtonDown(1) && dashAvailable)
         {
-            StartCoroutine(DoDash());
+            StartCoroutine(doDash());
         }
     }
 
-    IEnumerator DoDash()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        isDashCooldownActive = true;
+        if(collision.gameObject.tag == "DashTrigger")
+        {
+            dashAvailable = true;
+        }
+    }
+
+
+    IEnumerator doDash()
+    {
+        dashAvailable = false;
 
         this.GetComponent<Rigidbody2D>().isKinematic = true;
         this.GetComponent<Rigidbody2D>().velocity = new(this.GetComponent<Rigidbody2D>().velocity.x, 0);
@@ -32,14 +40,5 @@ public class Dash : MonoBehaviour
         this.GetComponent<Rigidbody2D>().isKinematic = false;
         this.GetComponent<Rigidbody2D>().velocity = oldVelocity;
 
-        //Won't work.
-        //if (level.GetComponent<CompositeCollider2D>().bounds.Contains(this.transform.position))
-        //{
-        //    this.GetComponent<PlayerDeath>().Death();
-        //}
-
-        yield return new WaitForSeconds(4f);
-
-        isDashCooldownActive = false;
     }
 }
