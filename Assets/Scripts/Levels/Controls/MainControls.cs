@@ -33,7 +33,7 @@ public class MainControls : MonoBehaviour
             foreach (ContactPoint2D hitPos in collision.contacts)
             {
                 
-                if ((hitPos.normal.y > 0.9f))
+                if (hitPos.normal.y > 0.9f)
                 {
                     jumpPoints = 2;
                     break;

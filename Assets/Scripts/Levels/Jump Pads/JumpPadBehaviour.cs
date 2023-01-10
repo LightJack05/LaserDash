@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class JumpPadBehaviour : MonoBehaviour
 {
+    public float JumpForce = 150f;
+    GameObject Player;
+
+    private void Start()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Jump pad triggered");
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, 100f, 0));
+            Player.GetComponent<Rigidbody2D>().velocity = new(Player.GetComponent<Rigidbody2D>().velocity.x, 0);
+            Player.GetComponent<Rigidbody2D>().AddForce(new(0, JumpForce), ForceMode2D.Impulse);
         }
     }
 }
