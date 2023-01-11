@@ -11,6 +11,11 @@ public class MainControls : MonoBehaviour
     }
     private void Update()
     {
+        if (!this.GetComponent<Dash>().Dashing)
+        {
+            this.GetComponent<Rigidbody2D>().velocity = new(6f, this.GetComponent<Rigidbody2D>().velocity.y);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (jumpPoints > 0)
