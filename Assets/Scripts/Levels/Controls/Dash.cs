@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Dash : MonoBehaviour
 {
@@ -10,19 +11,11 @@ public class Dash : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1) && dashAvailable)
+        if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.F)) && dashAvailable)
         {
             Debug.Log("Dash");
             Dashing = true;
             StartCoroutine(doDash());
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "DashTrigger")
-        {
-            dashAvailable = true;
         }
     }
 
@@ -32,6 +25,7 @@ public class Dash : MonoBehaviour
         if(collision.gameObject.tag == "DashTrigger")
         {
             dashAvailable = true;
+            this.GetComponent<Light2D>().color = Color.cyan;
         }
     }
 
@@ -53,6 +47,7 @@ public class Dash : MonoBehaviour
         this.GetComponent<BoxCollider2D>().enabled = true;
         this.GetComponent<Rigidbody2D>().isKinematic = false;
         this.GetComponent<Rigidbody2D>().velocity = oldVelocity;
+        this.GetComponent<Light2D>().color = Color.red;
 
         Dashing = false;
     }
