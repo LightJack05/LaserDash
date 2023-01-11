@@ -44,6 +44,7 @@ namespace LightJack.UnityTools.Debugging
             {
                 Debug.Log("Disabled Debug Mode");
                 DebugState.DisableDebugMode(DebugMenu,Player);
+                Player.GetComponent<PlayerDeath>().enabled = true;
                 DebugModeInitialized = false;
             }
 
@@ -64,6 +65,11 @@ namespace LightJack.UnityTools.Debugging
                 {
                     Time.timeScale = 0;
                 }
+            }
+
+            if(DebugState.DebugModeEnabled && Input.GetKeyDown(KeyCode.G))
+            {
+                Player.GetComponent<PlayerDeath>().enabled = !Player.GetComponent<PlayerDeath>().enabled;
             }
         }
 

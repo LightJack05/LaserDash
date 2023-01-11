@@ -22,7 +22,7 @@ public class MainControls : MonoBehaviour
             {
                 this.GetComponent<Rigidbody2D>().velocity = new(this.GetComponent<Rigidbody2D>().velocity.x, 0);
 
-                this.GetComponent<Rigidbody2D>().AddForce(new(0, 75f), ForceMode2D.Impulse);
+                this.GetComponent<Rigidbody2D>().AddForce(new(0, 74f), ForceMode2D.Impulse);
                 jumpPoints--;
             }
         }

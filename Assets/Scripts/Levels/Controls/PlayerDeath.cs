@@ -10,25 +10,10 @@ public class PlayerDeath : MonoBehaviour
     void FixedUpdate()
     {
 
-        //if (CheckForDeath)
-        //{
-        //if (this.GetComponent<Rigidbody2D>().velocity.x <= 2f)
-        //{
-        //    Death();
-        //}
         if (this.transform.position.y < -10)
         {
             Death();
         }
-        //}
-        //else
-        //{
-        //    //waitCounter--;
-        //    //if(waitCounter <= 0)
-        //    //{
-        //    //    CheckForDeath = true;
-        //    //}
-        //}
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
