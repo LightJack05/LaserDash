@@ -27,6 +27,10 @@ public class MainControls : MonoBehaviour
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            this.GetComponent<PlayerDeath>().Death();
+        }
     }
 
 

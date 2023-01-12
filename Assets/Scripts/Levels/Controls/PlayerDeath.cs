@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerDeath : MonoBehaviour
 {
     //int waitCounter = 10;
     //bool CheckForDeath = false;
+    public GameObject PlayerDeathEffect;
+
     void FixedUpdate()
     {
-
         if (this.transform.position.y < -10)
         {
             Death();
@@ -54,6 +56,21 @@ public class PlayerDeath : MonoBehaviour
     public void Death()
     {
         Debug.Log("Player died.");
+        StartCoroutine("DeathAnimation");
+    }
+
+    public IEnumerator DeathAnimation()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        this.gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        this.gameObject.GetComponent<Light2D>().enabled = false;
+        PlayerDeathEffect.SetActive(true);
+        Camera.main.gameObject.GetComponent<Camerafollow>().enabled = false;
+
+        yield return new WaitForSeconds(2);
+
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        yield return null;
     }
 }

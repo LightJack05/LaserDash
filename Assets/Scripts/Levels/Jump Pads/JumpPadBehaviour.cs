@@ -16,6 +16,7 @@ public class JumpPadBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            this.GetComponent<Animator>().enabled = true;
             Player.GetComponent<Rigidbody2D>().velocity = new(Player.GetComponent<Rigidbody2D>().velocity.x, 0);
             Player.GetComponent<Rigidbody2D>().AddForce(new(0, JumpForce), ForceMode2D.Impulse);
         }
