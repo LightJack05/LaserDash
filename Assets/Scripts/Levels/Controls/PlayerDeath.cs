@@ -55,7 +55,6 @@ public class PlayerDeath : MonoBehaviour
     }
     public void Death()
     {
-        Debug.Log("Player died.");
         StartCoroutine("DeathAnimation");
     }
 

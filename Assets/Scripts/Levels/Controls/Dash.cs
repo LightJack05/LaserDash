@@ -21,7 +21,6 @@ public class Dash : MonoBehaviour
     {
         if (dashAvailable)
         {
-            Debug.Log("Dash");
             Dashing = true;
             StartCoroutine(doDash());
         }
@@ -29,7 +28,7 @@ public class Dash : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Dash available.");
+
         if(collision.gameObject.tag == "DashTrigger")
         {
             dashAvailable = true;

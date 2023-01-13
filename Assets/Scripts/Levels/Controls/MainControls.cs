@@ -7,6 +7,7 @@ public class MainControls : MonoBehaviour
     int jumpPoints = 2;
     private void Start()
     {
+        Application.targetFrameRate = 120;
         this.GetComponent<Rigidbody2D>().AddForce(new(24f, 0), ForceMode2D.Impulse);
     }
     private void Update()
@@ -46,10 +47,6 @@ public class MainControls : MonoBehaviour
         }
     }
 
-    public void ScreenTap()
-    {
-
-    }
 
     private void Restart()
     {
@@ -58,8 +55,6 @@ public class MainControls : MonoBehaviour
 
     public void Jump()
     {
-        Debug.Log("Jump");
-
         if (jumpPoints > 0)
         {
             this.GetComponent<Rigidbody2D>().velocity = new(this.GetComponent<Rigidbody2D>().velocity.x, 0);

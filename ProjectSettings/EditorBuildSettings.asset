@@ -8,4 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/TestLevel.unity
     guid: 7904fd5a774aad9488bc1636584a81fe
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 2d5116ea35170994eb805d49063ebb40, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 3ccfe3d0d2d97c54ab938bcba84c9ae7, type: 2}
