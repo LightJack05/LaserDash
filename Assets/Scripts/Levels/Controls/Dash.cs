@@ -13,10 +13,15 @@ public class Dash : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.F)) && dashAvailable)
         {
-            Debug.Log("Dash");
-            Dashing = true;
-            StartCoroutine(doDash());
+            DashAction();
         }
+    }
+
+    private void DashAction()
+    {
+        Debug.Log("Dash");
+        Dashing = true;
+        StartCoroutine(doDash());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

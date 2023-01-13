@@ -18,20 +18,31 @@ public class MainControls : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (jumpPoints > 0)
-            {
-                this.GetComponent<Rigidbody2D>().velocity = new(this.GetComponent<Rigidbody2D>().velocity.x, 0);
-
-                this.GetComponent<Rigidbody2D>().AddForce(new(0, 74f), ForceMode2D.Impulse);
-                jumpPoints--;
-            }
+            Jump();
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            this.GetComponent<PlayerDeath>().Death();
+            Restart();
         }
     }
+
+    private void Restart()
+    {
+        this.GetComponent<PlayerDeath>().Death();
+    }
+
+    public void Jump()
+    {
+        if (jumpPoints > 0)
+        {
+            this.GetComponent<Rigidbody2D>().velocity = new(this.GetComponent<Rigidbody2D>().velocity.x, 0);
+
+            this.GetComponent<Rigidbody2D>().AddForce(new(0, 74f), ForceMode2D.Impulse);
+            jumpPoints--;
+        }
+    }
+
 
 
 
