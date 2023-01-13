@@ -17,11 +17,14 @@ public class Dash : MonoBehaviour
         }
     }
 
-    private void DashAction()
+    public void DashAction()
     {
-        Debug.Log("Dash");
-        Dashing = true;
-        StartCoroutine(doDash());
+        if (dashAvailable)
+        {
+            Debug.Log("Dash");
+            Dashing = true;
+            StartCoroutine(doDash());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

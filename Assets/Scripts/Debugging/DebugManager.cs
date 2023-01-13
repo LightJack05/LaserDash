@@ -73,6 +73,24 @@ namespace LightJack.UnityTools.Debugging
             }
         }
 
+        public void DebugUIButtonTapped()
+        {
+            if (!DebugState.DebugModeEnabled)
+            {
+                Debug.Log("Enabled Debug Mode");
+                DebugState.EnableDebugMode(DebugMenu, Player);
+                InitializeVelocityLines();
+                DebugModeInitialized = true;
+            }
+            else if (DebugState.DebugModeEnabled)
+            {
+                Debug.Log("Disabled Debug Mode");
+                DebugState.DisableDebugMode(DebugMenu, Player);
+                Player.GetComponent<PlayerDeath>().enabled = true;
+                DebugModeInitialized = false;
+            }
+        }
+
         public void UpdateDebugMenuDisplay()
         {
             DebugMenuText.text = $"Performance Monitoring" + "\n" + "\n" +

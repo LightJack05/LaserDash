@@ -68,9 +68,14 @@ public class PlayerDeath : MonoBehaviour
         PlayerDeathEffect.SetActive(true);
         Camera.main.gameObject.GetComponent<Camerafollow>().enabled = false;
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        Restart();
         yield return null;
+    }
+
+    public void Restart()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }

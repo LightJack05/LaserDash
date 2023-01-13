@@ -25,6 +25,30 @@ public class MainControls : MonoBehaviour
         {
             Restart();
         }
+
+        if(Input.touchCount == 1)
+        {
+            Vector2 touchPos = Input.GetTouch(0).position;
+            int screenWidth = Screen.width;
+            if(Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                if (touchPos.x > (screenWidth / 2))
+                {
+                    Jump();
+                }
+                else
+                {
+                    this.GetComponent<Dash>().DashAction();
+                }
+            }
+            
+            
+        }
+    }
+
+    public void ScreenTap()
+    {
+
     }
 
     private void Restart()
@@ -34,6 +58,8 @@ public class MainControls : MonoBehaviour
 
     public void Jump()
     {
+        Debug.Log("Jump");
+
         if (jumpPoints > 0)
         {
             this.GetComponent<Rigidbody2D>().velocity = new(this.GetComponent<Rigidbody2D>().velocity.x, 0);
@@ -42,8 +68,6 @@ public class MainControls : MonoBehaviour
             jumpPoints--;
         }
     }
-
-
 
 
     private void OnCollisionEnter2D(Collision2D collision)
