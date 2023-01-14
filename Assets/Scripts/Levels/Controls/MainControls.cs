@@ -7,7 +7,6 @@ public class MainControls : MonoBehaviour
     int jumpPoints = 2;
     private void Start()
     {
-        Application.targetFrameRate = 120;
         this.GetComponent<Rigidbody2D>().AddForce(new(24f, 0), ForceMode2D.Impulse);
     }
     private void Update()
