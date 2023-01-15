@@ -33,7 +33,14 @@ namespace LightJack.UnityTools.Debugging
                 DebugModeInitialized = true;
             }
 
-            if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.D) && !DebugState.DebugModeEnabled)
+            if (!DebugModeInitialized && SettingsStore.DebugModeEnabled)
+            {
+                DebugState.EnableDebugMode(DebugMenu, Player);
+                InitializeVelocityLines();
+                DebugModeInitialized = true;
+            }
+
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.D) && !DebugState.DebugModeEnabled)
             {
                 Debug.Log("Enabled Debug Mode");
                 DebugState.EnableDebugMode(DebugMenu,Player);

@@ -7,7 +7,7 @@ namespace LightJack.UnityTools.Debugging
 {
     public static class DebugState
     {
-        public static bool DebugModeEnabled { get; private set; } = false;
+        public static bool DebugModeEnabled { get; set; } = false;
 
         public static void EnableDebugMode(GameObject debugMenu, GameObject player)
         {
